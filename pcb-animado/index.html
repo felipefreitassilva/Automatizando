@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="pt-br">
+    <head>
+        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+        <title>Logo animado</title>
+        <meta name="description" content="Logo animado para o site do grupo Automatizando">
+        <style>
+            body{
+                height: calc(100vh - 20px);
+                overflow: hidden;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            img{
+                max-width: 580px;
+                animation: logoAnimado 4s infinite;
+            }
+
+            @keyframes logoAnimado {
+                50% {margin-top: 80px}
+            }
+        </style>
+    </head>
+    <body><img src="ARDUNAS.png"></body>
+</html>

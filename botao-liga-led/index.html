@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="pt-br">
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Clique no botão do Arduino para ligar o LED!">
+        <title>Botão liga LED</title>
+        <link href="css/style.css" rel="stylesheet">
+        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            div{
+                display: flex;
+                align-items: center;
+                flex-direction: column;
+                justify-content: center;
+            }
+
+            img{
+                width: 1100px;
+            }
+
+            img.ledApagado{
+                display: block;
+            }
+
+            img.ledAceso{
+                display: none;
+            }
+
+            button{
+                cursor: pointer;
+                color: #07A5B5;
+                font-size: 22px;
+                outline: 0;
+                background-color: rgba(240,240,240,0);
+                width: 300px;
+                height: 60px;
+                margin-bottom: 35px;
+            }
+
+            button.ligaLed{
+                display: block;
+            }
+
+            button.apagaLed{
+                display: none;
+            }
+
+            div.Button{
+                width: 22px;
+                height: 22px;
+                background-color: rgba(240,240,240,0);
+                bottom: 152px;
+                left: 335px;
+                position: relative;
+                border-radius: 50%;
+                cursor: pointer;
+            }
+
+            div.fakeOffButton{
+                display: none;
+            }
+
+            div.USB{
+                width: 237px;
+                height: 66px;
+                bottom: 286.5px;
+                right: 426px;
+                position: relative;
+                cursor: pointer;
+                background-color: rgba(240,240,240,0);
+                border-top-left-radius: 100%;
+                border-bottom-left-radius: 100%;
+            }
+
+            div.USBIn{
+                display: none;
+                width: 220px;
+                right: 370px;
+            }
+        </style>
+    </head>
+
+    <body>
+
+        <div>
+            <button class="ligaLed">Clique para ligar o LED!</button>
+            <button class="apagaLed">Clique para apagar o LED!</button>
+
+            <div>
+                <img class="ledApagado" src="ledApagado.png"/>
+                <img class="ledAceso" src="ledAceso.png" />
+            </div>
+
+            <div class="Button fakeOnButton"></div>
+            <div class="Button fakeOffButton"></div>
+
+            <div class="USB USBOut"></div>
+            <div class="USB USBIn"></div>
+        </div>
+
+        <script src="jquery.js"></script>
+        <script>
+            $(function () {
+
+                function ligaLed(){
+                    $(".ledApagado").css('display', 'none');
+                    $(".ledAceso").css('display', 'block');
+                    $(".ligaLed").css('display', 'none');
+                    $(".apagaLed").css('display', 'block');
+                    $(".fakeOnButton").css('display','none');
+                    $(".fakeOffButton").css('display','block');
+                    $(".USBOut").css('display','none');
+                    $(".USBIn").css('display','block');
+                }
+
+                function apagaLed(){
+                    $(".ledApagado").css('display', 'block');
+                    $(".ledAceso").css('display', 'none');
+                    $(".ligaLed").css('display', 'block');
+                    $(".apagaLed").css('display', 'none');
+                    $(".fakeOnButton").css('display','block');
+                    $(".fakeOffButton").css('display','none');
+                    $(".USBOut").css('display','block');
+                    $(".USBIn").css('display','none');
+                }
+
+                $("button.ligaLed").click(ligaLed);
+                $("button.apagaLed").click(apagaLed);
+
+                $("div.fakeOnButton").click(ligaLed);
+                $("div.fakeOffButton").click(apagaLed);
+
+                $("div.USBOut").click(ligaLed);
+                $("div.USBIn").click(apagaLed);
+
+            });
+        </script>
+
+    </body>
+
+</html>
